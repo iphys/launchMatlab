@@ -35,10 +35,15 @@ func main() {
 
 	switch len(args) {
 	case 1:
-		fmt.Printf("Found MATLAB install folders: %d \n", numFolders)
+		fmt.Println("MATLAB Launcher, written in Go. January 2022.")
+		fmt.Println()
+		fmt.Printf("Found %d MATLAB install folders:\n", numFolders)
 		for i := range installedFolders {
 			fmt.Println(matlabFolders[i])
 		}
+		fmt.Println()
+		fmt.Println("Pass the lower two digits followed by letter(s), e.g. 21b,")
+		fmt.Println("as the first argument to start the specific release of MATLAB.")
 
 	case 2:
 		commandStr := InstallPathRoot + "R20" + args[1] + RelPathToProgram
@@ -55,15 +60,4 @@ func main() {
 		log.Println("Too many arguments")
 	}
 
-	/*
-		cmd := exec.Command(full)
-		//cmd.Stdin = strings.NewReader("some input")
-		var out bytes.Buffer
-		cmd.Stdout = &out
-		err := cmd.Start()
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Printf("%q\n", out.String())
-	*/
 }
