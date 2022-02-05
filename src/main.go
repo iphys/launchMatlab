@@ -38,7 +38,7 @@ func main() {
 		fmt.Println("MATLAB Launcher in Go. January 2022.")
 		fmt.Println()
 		if len(installedFolders) == 0 {
-			fmt.Println("No MATLAB install folder was found under %v\n", numFolders, InstallPathRoot)
+			fmt.Printf("No MATLAB install folder was found under %v\n", InstallPathRoot)
 			return
 		}
 		fmt.Printf("%d MATLAB install folders were found under %v\n", numFolders, InstallPathRoot)
