@@ -35,15 +35,21 @@ func main() {
 
 	switch len(args) {
 	case 1:
-		fmt.Println("MATLAB Launcher, written in Go. January 2022.")
+		fmt.Println("MATLAB Launcher in Go. January 2022.")
 		fmt.Println()
-		fmt.Printf("Found %d MATLAB install folders:\n", numFolders)
+		if len(installedFolders) == 0 {
+			fmt.Println("No MATLAB install folder was found under %v\n", numFolders, InstallPathRoot)
+			return
+		}
+		fmt.Printf("%d MATLAB install folders were found under %v\n", numFolders, InstallPathRoot)
 		for i := range installedFolders {
 			fmt.Println(matlabFolders[i])
 		}
 		fmt.Println()
-		fmt.Println("Pass the lower two digits followed by letter(s), e.g. 21b,")
-		fmt.Println("as the first argument to start the specific release of MATLAB.")
+		fmt.Println("To start the specific release of MATLAB,")
+		fmt.Println("pass the lower two digits followed by letter(s), e.g. 21b,")
+		fmt.Println("as the first argument to this command.")
+		fmt.Printf("Then %v for that release is launched.", RelPathToProgram)
 
 	case 2:
 		commandStr := InstallPathRoot + "R20" + args[1] + RelPathToProgram
